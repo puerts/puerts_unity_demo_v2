@@ -40,12 +40,20 @@
         interface IFormattable
         {
         }
-        class Array extends System.Object implements System.ICloneable, System.Collections.IEnumerable, System.Collections.IList, System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.Collections.ICollection
+        class String extends System.Object implements System.ICloneable, System.Collections.IEnumerable, System.IComparable, System.IComparable$1<string>, System.IConvertible, System.IEquatable$1<string>, System.Collections.Generic.IEnumerable$1<number>
         {
             protected [__keep_incompatibility]: never;
         }
         interface ICloneable
         {
+        }
+        class Char extends System.ValueType implements System.IComparable, System.IComparable$1<number>, System.IConvertible, System.IEquatable$1<number>
+        {
+            protected [__keep_incompatibility]: never;
+        }
+        class Array extends System.Object implements System.ICloneable, System.Collections.IEnumerable, System.Collections.IList, System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.Collections.ICollection
+        {
+            protected [__keep_incompatibility]: never;
         }
     }
     namespace UnityEngine {
@@ -73,11 +81,28 @@
         {
             protected [__keep_incompatibility]: never;
         }
+        /** Representation of 3D vectors and points.
+        */
+        class Vector3 extends System.ValueType implements System.IEquatable$1<UnityEngine.Vector3>, System.IFormattable
+        {
+            protected [__keep_incompatibility]: never;
+        }
+        /** Representation of 2D vectors and points.
+        */
+        class Vector2 extends System.ValueType implements System.IEquatable$1<UnityEngine.Vector2>, System.IFormattable
+        {
+            protected [__keep_incompatibility]: never;
+        }
     }
         class Scripts extends UnityEngine.MonoBehaviour
         {
             protected [__keep_incompatibility]: never;
-            public static IntArgAndReturnInt ($a: number, $b?: number) : number
+            public static IntArgAndReturnInt ($a: number) : number
+            public static IntArgAndReturnIntWithOverload ($a: number) : number
+            public static IntArgAndReturnIntWithOverload ($a: string) : number
+            public static Vector3ArgAndReturnVector3 ($v: UnityEngine.Vector3) : UnityEngine.Vector3
+            public static Vector3ArgAndReturnVector3WithOverload ($a: UnityEngine.Vector3) : UnityEngine.Vector3
+            public static Vector3ArgAndReturnVector3WithOverload ($a: UnityEngine.Vector2) : UnityEngine.Vector3
             public constructor ()
         }
         namespace System.Collections {
@@ -94,6 +119,11 @@
         {
         }
         interface IStructuralEquatable
+        {
+        }
+    }
+    namespace System.Collections.Generic {
+        interface IEnumerable$1<T> extends System.Collections.IEnumerable
         {
         }
     }
