@@ -1,3 +1,3 @@
-git clone 
-git submodule update --init
-打开 projects
+* git clone 
+* git submodule update --init
+* 打开 projects
