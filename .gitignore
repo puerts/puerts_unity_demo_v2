@@ -1,0 +1,9 @@
+projects/build
+projects/Library
+projects/Logs
+projects/Packages
+projects/ProjectSettings
+projects/UserSettings
+projects/*.csproj
+projects/*.sln
+projects/.vsconfig
