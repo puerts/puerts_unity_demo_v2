@@ -11,11 +11,30 @@ jobs:
       - name: Checkout project
         uses: actions/checkout@v2
 
+      - name: Restore cached Primes
+        id: cache-primes-restore
+      - uses: actions/cache/restore@v3
+        with:
+          path: ~/UNITY
+          key: ${{ runner.os }}-primes
+
       - name: Setup Unity
+        if: steps.cache-primes.outputs.cache-hit != 'true'
         uses: kuler90/setup-unity@v1
         with:
           unity-modules: windows-il2cpp
           unity-version: '2020.3.35f1'
+          unity-path: ~/UNITY
+          
+      - name: Test
+        shell: bash
+        run: |
+          echo ${{env.UNITY_PATH}}
+            
+      - uses: actions/cache/save@v3
+        with:
+          path: ~/UNITY
+          key: ${{ steps.cache-primes-restore.outputs.cache-primary-key }}
 
       - name: Activate Unity
         uses: kuler90/activate-unity@v1
@@ -23,8 +42,3 @@ jobs:
           unity-username: ${{ secrets.UNITY_USERNAME }}
           unity-password: ${{ secrets.UNITY_PASSWORD }}
           unity-serial: ${{ secrets.UNITY_AUTHENTICATOR_KEY }}
-          
-      - name: Test
-        shell: bash
-        run: |
-          echo ${{env.UNITY_PATH}}
