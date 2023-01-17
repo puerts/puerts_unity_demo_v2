@@ -1,0 +1,30 @@
+name: run unity
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  windows:
+    runs-on: windows-2022
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v2
+
+      - name: Setup Unity
+        uses: kuler90/setup-unity@v1
+        with:
+          unity-modules: windows-il2cpp
+          unity-version: '2020.3.35f1c1'
+
+      - name: Activate Unity
+        uses: kuler90/activate-unity@v1
+        with:
+          unity-username: ${{ secrets.UNITY_USERNAME }}
+          unity-password: ${{ secrets.UNITY_PASSWORD }}
+          unity-authenticator-key: ${{ secrets.UNITY_AUTHENTICATOR_KEY }}
+          
+      - name: Test
+        shell: bash
+        run: |
+          echo ${{env.UNITY_PATH}}
