@@ -15,7 +15,7 @@ jobs:
         uses: kuler90/setup-unity@v1
         with:
           unity-modules: windows-il2cpp
-          unity-version: '2020.3.35'
+          unity-version: '2020.3.35f1'
 
       - name: Activate Unity
         uses: kuler90/activate-unity@v1
