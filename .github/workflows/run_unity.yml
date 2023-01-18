@@ -13,12 +13,12 @@ jobs:
 
       - uses: actions/cache/restore@v3
         with:
-          path: ./UNITY
-          key: ${{ runner.os }}-unity
+          path: C:/UNITY
+          key: ${{ runner.os }}-unity 
           
       - name: MKDIR
         shell: bash
-        run: mkdir ./UNITY
+        run: mkdir C:/UNITY
 
       - name: Setup Unity
         if: steps.cache-primes.outputs.cache-hit != 'true'
@@ -26,7 +26,7 @@ jobs:
         with:
           unity-modules: windows-il2cpp
           unity-version: '2020.3.35f1'
-          install-path: ./UNITY
+          install-path: C:/UNITY
           
       - name: Test
         shell: bash
@@ -34,7 +34,7 @@ jobs:
             
       - uses: actions/cache/save@v3
         with:
-          path: ./UNITY
+          path: C:/UNITY
           key: ${{ runner.os }}-unity
 
       - name: Activate Unity
