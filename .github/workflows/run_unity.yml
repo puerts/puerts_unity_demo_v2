@@ -22,7 +22,7 @@ jobs:
 
       - name: Setup Unity
         if: steps.cache-primes.outputs.cache-hit != 'true'
-        uses: kuler90/setup-unity@v1
+        uses: zombieyang/setup-unity@v1
         with:
           unity-modules: windows-il2cpp
           unity-version: '2020.3.35f1'
