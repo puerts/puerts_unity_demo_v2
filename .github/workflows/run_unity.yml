@@ -18,6 +18,7 @@ jobs:
           key: ${{ runner.os }}-unity 
           
       - name: MKDIR
+        if: steps.cache-unity.outputs.cache-hit != 'true'
         shell: bash
         run: mkdir C:/UNITY
 
