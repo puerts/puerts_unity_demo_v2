@@ -22,17 +22,17 @@ jobs:
         with:
           unity-modules: windows-il2cpp
           unity-version: '2020.3.35f1'
-          unity-path: ./UNITY
+          install-path: ./UNITY
           
       - name: Test
         shell: bash
         run: |
-          echo ${{env.UNITY_PATH}}
+          echo "${{env.UNITY_PATH}}"
             
       - uses: actions/cache/save@v3
         with:
           path: ./UNITY
-          key: ${{ steps.cache-primes-restore.outputs.cache-primary-key }}
+          key: ${{ runner.os }}-unity
 
       - name: Activate Unity
         uses: kuler90/activate-unity@v1
